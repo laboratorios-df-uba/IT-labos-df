@@ -1,0 +1,116 @@
+\chapter[Requerimientos de red - Software]{Requerimientos de red - Software}
+\label{cp:requerimientos-software}
+{
+\section*{Resumen}
+Los laboratorios de enseñanza del Departamento de Física cuentan con 5 espacios/laboratorios con entre 12 y 16 computadoras cada uno, las cuales se necesita que estén conectadas a una red local para poder compartir recursos y acceder a internet. Todas estas computadoras, al día de hoy, usan Windows como sistema operativo. Se intentó hacer un cambio a Linux, pero no se pudo por falta de soporte para muchos de los equipos y la falta de conocimiento en el manejo de este por parte del cuerpo docente y el personal técnico de los laboratorios.
+
+Muchos de los laboratorios, además de necesitar bocas de red para las computadoras, necesitan bocas de red para otros equipos como proyectores, impresoras, equipos de medición, etc.
+
+En esta parte del artículo solo se hará referencia a los requerimientos de software. 
+
+\section{Necesidades de recursos compartidos y red}
+\subsection{Permisos}
+Cuando llegué al laboratorio (y desde que usé las PC como alumno, si no recuerdo mal), los alumnos tienen un usuario general de acceso a las PC con el que pueden usar con libertad el software y guardar archivos en las carpetas de alumnos, Documentos y Descargas, aunque también tienen el mal hábito de usar el escritorio para esto. Por otro lado, no tienen ningún privilegio para instalar o borrar programas, ni para cambiar cualquier configuración. 
+Hasta donde me comentaron, esto es porque de otra manera el mantenimiento era insostenible o al menos esto es lo que siempre se argumentó.
+
+Por otro lado, el personal de los laboratorios, que anteriormente hacía mantenimiento básico y hoy genera las imágenes e instala/reinstala todo el software, debe contar con muchos más privilegios. Sobre todo, privilegios de instalación de software:
+
+\begin{description}
+    \item[Alumnos:] Usuario y contraseñas únicas. Uso de software y guardado de archivos en lugares seleccionados.
+    \item[Docentes:] Usuario y contraseñas únicas. En principio igual que los alumnos.
+    \item[Técnico:] Usuario y contraseñas por usuario. Acceso de administrador.
+\end{description}
+
+Existen algunos problemas con el acceso de escritura restringido para alumnos. Algunos programas como Anaconda para crear los entornos virtuales, por defecto, usan un subdirectorio en su carpeta de instalación, y al estar restringido el acceso, la creación de entornos virtuales (algo muy útil para alumnos) falla.
+
+\subsection{Impresoras} 
+Todos los laboratorios cuentan con impresoras locales pero, por falta de hojas o mal funcionamiento, es habitual que los alumnos necesiten acceder a las impresoras de otro laboratorio. Por esto es necesario que las computadoras de todos los laboratorios puedan acceder a las impresoras de todos los laboratorios.
+
+\subsection{Archivos} 
+Algo similar pasa entre los archivos de las computadoras. Tanto para instalar imágenes o programas pesados, como para compartir archivos entre los alumnos, es necesario que las computadoras de todos los laboratorios puedan acceder a los archivos de todos los laboratorios. Antiguamente se habían creado carpetas de uso general (una para cada laboratorio) para que los alumnos puedan guardar y acceder a los archivos en ese lugar; si no recuerdo mal, todas las computadoras de cada laboratorio montaban una unidad de almacenamiento de red en el inicio de sesión para que la carpeta compartida sea fácil de acceder. En otro momento también se compartió la carpeta de Documentos de cada computadora de alumnos como un recurso de red, y eso facilitó mucho el acceso a los archivos. No tengo idea de cuál de las soluciones es mejor. 
+
+
+\section{Sistemas operativos y distribución de hardware de las computadoras}
+En todos los laboratorios las computadoras son de escritorio y se intenta que todas las computadoras usadas por los alumnos tengan el mismo hardware, sistema operativo y, sobre todo, la misma configuración de software. Esto es para que los alumnos puedan trabajar en cualquier computadora del laboratorio sin tener que adaptarse a un nuevo entorno de trabajo. 
+
+Las computadoras usadas por el personal técnico de los laboratorios no necesariamente comparten hardware, pero sí el sistema operativo y la configuración de software básico, además de agregar otro software para el diseño y mantenimiento de los equipos del laboratorio. 
+
+En líneas generales, la instalación de software de las PC es:
+
+\subsection{Laboratorio 3}
+\begin{itemize}
+    \item \textbf{Windows 11 Pro:} Sistema operativo (se usa sin activar por no tener licencia).
+    \item \textbf{Google Chrome / Firefox:} Navegadores.
+%   \item \textbf{Visual Studio Code:} IDE bastante usado entre alumnos.
+%   \begin{itemize}
+%       \item Extensiones para desarrollo en Python, C y Arduino.
+%   \end{itemize}
+    \item \textbf{Anaconda Python:} Con librerías para desarrollo en Python.
+    \begin{itemize}
+        \item \textbf{Jupyter Notebook:} Uno de los IDE más usados.
+        \item \textbf{Spyder:} Actualmente el IDE más usado.
+        \item \textbf{Pandas}
+        \item \textbf{NumPy}
+        \item \textbf{Matplotlib}
+        \item \textbf{SciPy}
+        \item \textbf{PyVisa}
+        \item \textbf{PySerial:} PyVisa puede reemplazar a PySerial, pero se mantiene por compatibilidad con proyectos viejos.
+        \item \textbf{NI-DAQmx:} Para comunicación con las placas de adquisición de NI y Vernier.
+    \end{itemize}
+    \item \textbf{Arduino IDE}
+    \item \textbf{Programas usados con Arduino para ploteo y guardado de datos.}
+    \item \textbf{LTspice:} Software de simulación de circuitos electrónicos.
+    \item \textbf{NI Package Manager:} Administrar paquetes de software de National Instruments y NI-VISA.
+    \begin{itemize}
+        \item \textbf{NI-VISA / NI 488.2:} (En general se instalan juntos). Librería para comunicación con instrumentos de medición.
+        \item \textbf{NI MAX:} Software para configurar y administrar instrumentos de medición.
+        \item \textbf{NI-DAQmx:} Librería para comunicación con las placas de adquisición de NI y Vernier.
+    \end{itemize}
+    \item \textbf{MotionDAQ:} Software para comunicación con placas Vernier de adquisición de datos.
+    \item \textbf{OpenChoice Desktop:} Alternativa para usar con osciloscopios Tektronix.
+    \item (OPCIONAL) \textbf{KiCad:} Diseño de PCB.
+\end{itemize}
+
+\subsection{Laboratorio 4}
+\begin{itemize}
+    \item \textbf{Windows 11 Pro:} Sistema operativo (se usa sin activar por no tener licencia).
+    \item \textbf{Google Chrome / Firefox:} Navegadores.
+    \item \textbf{Visual Studio Code:} IDE bastante usado entre alumnos.
+    \begin{itemize}
+        \item Extensiones para desarrollo en Python, C y Arduino.
+    \end{itemize}
+    \item \textbf{Anaconda Python:} Con librerías para desarrollo en Python.
+    \begin{itemize}
+        \item \textbf{Jupyter Notebook:} Uno de los IDE más usados.
+        \item \textbf{Spyder:} Actualmente el IDE más usado.
+        \item \textbf{Pandas}
+        \item \textbf{NumPy}
+        \item \textbf{Matplotlib}
+        \item \textbf{SciPy}
+        \item \textbf{PyVisa}
+        \item \textbf{PySerial:} PyVisa puede reemplazar a PySerial, pero se mantiene por compatibilidad con proyectos viejos.
+        \item \textbf{NI-DAQmx:} Para comunicación con las placas de adquisición de NI y Vernier.
+        \item \textbf{OpenCV (cv2):} Para procesamiento de imágenes.
+    \end{itemize}
+    \item \textbf{Arduino IDE}
+    \item \textbf{LTspice:} Software de simulación de circuitos electrónicos.
+    \item \textbf{NI Package Manager:} Administrar paquetes de software de National Instruments y NI-VISA.
+    \begin{itemize}
+        \item \textbf{NI-VISA / NI 488.2:} Librería para comunicación con instrumentos de medición.
+        \item \textbf{NI MAX:} Software para configurar y administrar instrumentos de medición.
+        \item \textbf{NI-DAQmx:} Librería para comunicación con las placas de adquisición de NI y Vernier.
+    \end{itemize}
+    \item \textbf{Thorlabs APT:} Software para comunicación con los equipos de medición de Thorlabs.
+    \item TODO: "Programas específicos para manejo de equipos Thorlabs, espectrómetros, pinzas ópticas, medidor de potencia, etc."
+    \item \textbf{MotionDAQ:} Software para comunicación con placas Vernier de adquisición de datos.
+    \item (OPCIONAL) \textbf{Autodesk Inventor:} Software de diseño 3D CAD/CAM/CAE.
+    \item (OPCIONAL, no tenemos licencia) \textbf{SolidWorks:} Software de diseño CAD/CAM/CAE.
+    \item (OPCIONAL) \textbf{CircuitMaker:} Diseño de PCB.
+    \item (OPCIONAL) \textbf{KiCad:} Diseño básico de PCB.
+    \item (OPCIONAL, no tenemos licencia) \textbf{MATLAB:} Software de computación numérica y simulación.
+    \item (OPCIONAL, no tenemos licencia) \textbf{Altium Designer}.
+    \item (OPCIONAL, no tenemos licencia) \textbf{Cadence}.
+    \item (OPCIONAL, no tenemos licencia) \textbf{LabVIEW:} Software de programación gráfica para adquisición de datos y control de instrumentos.
+\end{itemize}
+
+}

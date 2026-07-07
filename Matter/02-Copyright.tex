@@ -1,0 +1,24 @@
+\pagenumbering{gobble} % Prevent page numbering.
+
+\vspace*{\fill}
+
+\ifthenelse{\equal{\LanguageOption}{spanish}}{%
+    \noindent \textbf{\GetTitle}
+    
+    \noindent Copyright \textcopyright~\the\year{} - \GetFirstAuthor, \GetSchool.
+    
+    \vspace{.575em}
+    
+    \noindent Este documento es de uso interno y ha sido elaborado exclusivamente como referencia técnica sobre el estado actual de la infraestructura de sistemas en los laboratorios de enseñanza del Departamento de Física. Su objetivo es servir de apoyo a todo el personal técnico en las tareas de mantenimiento, configuración y optimización de los equipos y la red. Por favor, mantener su circulación dentro de este ámbito de trabajo.
+}{%
+    \noindent \textbf{\GetTitle}
+    
+    \noindent Copyright \textcopyright~\the\year{} - \GetFirstAuthor, \GetSchool.
+    
+    \vspace{.575em}
+    
+    \noindent This document is for internal use and has been prepared exclusively as a technical reference regarding the current state of the systems infrastructure in the Physics Department's teaching laboratories. Its objective is to support the technical staff in the maintenance, configuration, and optimization of the equipment and network. Please keep its circulation restricted to this working environment.
+}
+
+\vspace*{\fill}
+\MediaOptionLogic
