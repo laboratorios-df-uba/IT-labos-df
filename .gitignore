@@ -1,6 +1,6 @@
 # Documentation build artifacts
-build/
 !build/main.pdf
+build/
 ./**/*.log
 ./**/*.aux
 ./**/*.toc
