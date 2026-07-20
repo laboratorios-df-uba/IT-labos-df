@@ -1,0 +1,20 @@
+\chapter[Reportes de Incidencias]{Reportes de Incidencias}
+\label{cp:reportes-incidencias}
+
+Este capítulo reúne reportes de problemas concretos detectados durante tareas de mantenimiento, con el diagnóstico hecho en el momento y la causa (si se sabe).
+
+\section{Pérdida de conectividad con el dominio laboratorios.df}
+
+Maga siguió los pasos de clonación indicados en el manual de las notas de pañoleros para el mantenimiento de las PCs. En el último paso, al intentar renombrar la máquina, tuvo un problema y no podía cambiar el nombre ya sea por problemas de administradores (no un error de usuario o contraseña incorrectos) o por algún otro error que surgía.
+
+Seguí el procedimiento que ya he usado de ese mismo manual en una de las compus de labo3: sacar la PC del dominio a un grupo de trabajo local, renombrarla ahí, y volver a unirla a \texttt{laboratorios.df}. El renombrado funcionó sin problemas, pero al intentar el reingreso al dominio Windows devolvió:
+
+\begin{quote}
+\textit{``No se puede poner en contacto con un controlador de dominio de Active Directory (AD DC) en el dominio `laboratorios.df'.''}
+\end{quote}
+
+Confirmé que la configuración de red de la PC estaba bien (DNS apuntando a \texttt{192.168.123.11}, el DNS del dominio) y que no era un problema de la PC, para eso hice una consulta directa (\texttt{nslookup laboratorios.df 192.168.123.11}) agotó el tiempo de espera cinco veces seguidas, mientras que el acceso a internet desde la misma red seguía funcionando con normalidad. Es decir, el problema estaba acotado al servicio de dominio, no a la red en general.
+
+Todos estos problemas tienen mucho sentido, ya que \texttt{laboratorios.df} ya no existe. Por lo que tengo entendido corría en el servidor que se dio de baja (del cuarto de computadoras en labo2), y por eso nos conectamos a compus. Las máquinas que hoy parecen seguir funcionando en el dominio lo hacen con credenciales cacheadas localmente, sin validación real contra un controlador.
+
+La PC quedó en grupo de trabajo local, con todo el software y la configuración instalados, solo quedaría unirla al dominio en cuanto haya uno disponible. El resto de las PCs quedaron pendientes de los mismo pasos que mencioné al principio de todo.
